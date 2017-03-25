@@ -18,7 +18,7 @@ public class Main {
         }
         System.out.println("Driver good");
         try {
-            conn = DriverManager.getConnection("jdbc:derby:evanDB;create=true");
+            conn = DriverManager.getConnection("jdbc:derby:testDB;create=true");
         }
         catch (SQLException e){
             System.out.println("Connection Error");
