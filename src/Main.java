@@ -1,22 +1,12 @@
-import javafx.application.Application;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
-import javafx.stage.Stage;
-
 import java.sql.*;
 
 /**
- * Created by evan on 3/23/17.
+ * Created by evan on 3/25/17.
  */
-public class Main extends Application{
+public class Main {
     static Connection conn = null;
     static Statement stmt = null;
 
-    /**
-     * Program main
-     * @param args Command Line Args
-     */
     public static void main(String[] args){
         try {
             Class.forName("org.apache.derby.jdbc.EmbeddedDriver");
@@ -36,9 +26,8 @@ public class Main extends Application{
             return;
         }
         System.out.println("Connection Good!");
-
-        Application.launch(args);
     }
+
 
     /**
      * Sends a command to the server and returns the result set
@@ -67,21 +56,5 @@ public class Main extends Application{
         }
         return null;
     }
-
-    /**
-     * Start the javafx window, load from fxml
-     * @param stage Used by JFX
-     * @throws Exception
-     */
-    public void start(Stage stage) throws Exception {
-        Parent root = FXMLLoader.load(getClass().getResource("evandb.fxml"));
-
-        Scene scene = new Scene(root, 600, 150);
-
-        stage.setTitle("JDBC Tester");
-        stage.setScene(scene);
-        stage.show();
-    }
-
 
 }
