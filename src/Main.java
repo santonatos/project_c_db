@@ -8,16 +8,20 @@ public class Main {
     private static DatabaseController dbc = null;
 
     public static void main(String[] args){
-        dbc = new DatabaseController("org.apache.derby.jdbc.EmbeddedDriver","jdbc:derby:testDB;create=true");
+        dbc = new DatabaseController("oracle.jdbc.driver.OracleDriver","jdbc:oracle:thin:@oracle.wpi.edu:1521:orcl");
         DatabaseEditor dbe = new DatabaseEditor(dbc);
         try {
             dbc.registerDriver();
-            dbc.connect();
+            dbc.connect("UN","PW");
         }
         catch (Exception e){
             e.printStackTrace();
         }
+        dbe.add_Service(1, "X-Ray");
+        dbe.add_Service(2, "Surgery");
+        dbe.add_Service(3, "Facilities");
         System.out.println(dbc);
+
     }
 
 }

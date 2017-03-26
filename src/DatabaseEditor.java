@@ -21,14 +21,18 @@ public class DatabaseEditor {
     }
 
 
-    public boolean addService(){
+    public boolean add_Service(int service_id, String name){
+        ResultSet rs;
+        rs = dbc.send_Command("insert into service values(" + Integer.toString(service_id) + ", '" + name + "')");
+        return (rs==null);
+    }
+    public boolean edit_Service(int service_id, String new_name){
         return false;
     }
-    public boolean edit_Service(){
-        return false;
-    }
-    public boolean removeService(){
-        return false;
+    public boolean remove_Service(int service_id){
+        ResultSet rs;
+        rs = dbc.send_Command("delete from service where id=" + Integer.toString(service_id) + "')");
+        return (rs==null);
     }
 
 

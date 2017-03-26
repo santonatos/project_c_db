@@ -9,6 +9,7 @@ public class DatabaseController {
     private Statement stmt = null;
     private String url = "";
     private String driver = "";
+    private boolean connected = false;
 
     DatabaseController(String _driver, String _url){
         this.url = _url;
@@ -45,12 +46,19 @@ public class DatabaseController {
 
     boolean connect() throws SQLException{
         conn = DriverManager.getConnection(url);
+        this.connected = true;
+        return true;
+    }
+
+    boolean connect(String username, String password) throws SQLException{
+        conn = DriverManager.getConnection(url,username,password);
+        this.connected = true;
         return true;
     }
 
     @Override
     public String toString(){
-        if (url.length() > 0)
+        if (url.length() > 0 && connected)
             return "DatabaseController connected to " + url;
         return "Unconnected DatabaseController";
     }
