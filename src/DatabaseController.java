@@ -2,15 +2,17 @@ import java.sql.*;
 
 /**
  * Created by evan on 3/25/17.
- * This Object will register, connect, and submit queries to any database specified by '_url' in the constructor
+ * This Object will register, connect, and submit queries to any database specified by '_driver' and '_url' in the constructor
  */
 public class DatabaseController {
     private Connection conn = null;
     private Statement stmt = null;
     private String url = "";
+    private String driver = "";
 
-    DatabaseController(String _url){
+    DatabaseController(String _driver, String _url){
         this.url = _url;
+        this.driver =   _driver;
     }
 
     public ResultSet send_Command(String command){
@@ -37,12 +39,12 @@ public class DatabaseController {
     }
 
     boolean registerDriver() throws ClassNotFoundException{
-        Class.forName("org.apache.derby.jdbc.EmbeddedDriver");
+        Class.forName(driver);
         return true;
     }
 
     boolean connect() throws SQLException{
-        conn = DriverManager.getConnection("jdbc:derby:testDB;create=true");
+        conn = DriverManager.getConnection(url);
         return true;
     }
 
