@@ -40,7 +40,6 @@ public class DatabaseEditor {
         return (rs==null);
     }
 
-
     public boolean add_Room_Service(int service_id, String room_number){
         ResultSet rs;
         rs = dbc.send_Command("insert into located values(" + Integer.toString(service_id) + ",'" + room_number + "')");
