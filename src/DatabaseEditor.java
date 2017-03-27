@@ -21,20 +21,29 @@ public class DatabaseEditor {
     }
 
 
-    public boolean addService(){
-        return false;
+    public boolean addService(int service_id, String name){
+        ResultSet rs;
+        rs = dbc.send_Command("insert into located values(" + Integer.toString(service_id)+ ",'" + name + "')");
+
+        return (rs==null);
     }
-    public boolean edit_Service(){
-        return false;
+    public boolean edit_Service(int service_id, String New_name){
+        ResultSet rs;
+        rs = dbc.send_Command("update from located set name='" + New_name + "' where sid=" + Integer.toString(service_id)+ "')");
+
+        return (rs==null);
     }
-    public boolean removeService(){
-        return false;
+    public boolean removeService(int service_id, String name){
+        ResultSet rs;
+        rs = dbc.send_Command("delete from located where sid=" + Integer.toString(service_id) + " and name='" + name + "')");
+
+        return (rs==null);
     }
 
 
     public boolean add_Room_Service(int service_id, String room_number){
         ResultSet rs;
-        rs = dbc.send_Command("insert into located values(" + Integer.toString(service_id) + ", '" + room_number + "')");
+        rs = dbc.send_Command("insert into located values(" + Integer.toString(service_id) + ",'" + room_number + "')");
         return (rs==null);
 
     }
