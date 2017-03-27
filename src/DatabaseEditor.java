@@ -38,8 +38,9 @@ public class DatabaseEditor {
         return (rs==null);
     }
     public boolean edit_Service(int service_id, String new_name){
-        return false;
-    }
+        ResultSet rs;
+        rs = dbc.send_Command("update from service where id=" + Integer.toString(service_id));
+        return (rs==null);    }
 
     /**
      * Takes in a service id and then removes any entry with that id number
@@ -48,7 +49,7 @@ public class DatabaseEditor {
      */
     public boolean remove_Service(int service_id){
         ResultSet rs;
-        rs = dbc.send_Command("delete from service where id=" + Integer.toString(service_id) + "')");
+        rs = dbc.send_Command("delete from service where id=" + Integer.toString(service_id));
         return (rs==null);
     }
 
