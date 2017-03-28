@@ -12,6 +12,7 @@ import java.sql.*;
  * Main Execution Entry Point
  */
 public class Main extends Application{
+    public static Stage stage;
     public static DatabaseController dbc = null;
 
     public static void main(String[] args){
@@ -19,7 +20,8 @@ public class Main extends Application{
     }
 
     @Override
-    public void start(Stage stage){
+    public void start(Stage _stage){
+        stage = _stage;
         Parent root = null;
         try {
             root = FXMLLoader.load(getClass().getResource("DBSelectWindow.fxml"));

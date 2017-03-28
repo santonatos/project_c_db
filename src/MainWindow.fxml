@@ -15,6 +15,6 @@
          </opaqueInsets>
       </TextField>
       <Text layoutX="25.0" layoutY="40.0" strokeType="OUTSIDE" strokeWidth="0.0" text="SQL Query" />
-      <Button layoutX="411.0" layoutY="89.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="131.0" text="Submit Query" />
+      <Button onMouseClicked="#onSubmitClick" layoutX="411.0" layoutY="89.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="131.0" text="Submit Query" />
    </children>
 </Pane>

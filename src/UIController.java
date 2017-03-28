@@ -1,4 +1,7 @@
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.TextField;
 
 /**
@@ -27,6 +30,7 @@ public class UIController {
         }
         catch (Exception e){
             e.printStackTrace();
+            return;
         }
         System.out.println(dbc);
         openMainWindow();
@@ -41,6 +45,7 @@ public class UIController {
         }
         catch (Exception e){
             e.printStackTrace();
+            return;
         }
         System.out.println(dbc);
         openMainWindow();
@@ -48,10 +53,22 @@ public class UIController {
 
     @FXML
     void onSubmitClick(){
-        dbc.send_Command(CommandBox.getText());
+        System.out.println("Sending Command");
+        System.out.println(dbc.send_Command(CommandBox.getText()));
     }
 
     void openMainWindow(){
+        Parent root = null;
+        try {
+            root = FXMLLoader.load(getClass().getResource("MainWindow.fxml"));
+        }
+        catch (Exception e){
+            e.printStackTrace();
+        }
+        Scene scene = new Scene(root);
+        Main.stage.setTitle("Project C Database");
+        Main.stage.setScene(scene);
+        Main.stage.show();
 
     }
 
