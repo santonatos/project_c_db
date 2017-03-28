@@ -1,13 +1,13 @@
 ----------------------------------------------------------------
-Mon Mar 27 23:34:57 EDT 2017:
-Booting Derby version The Apache Software Foundation - Apache Derby - 10.11.1.2 - (1629631): instance a816c00e-015b-12fb-1619-000003041240 
-on database directory /home/evan/Documents/SoftEng/project_c_db/testDB with class loader sun.misc.Launcher$AppClassLoader@2b193f2d 
-Loaded from file:/usr/java/jdk1.8.0_121/db/lib/derby.jar
+Tue Mar 28 16:09:04 EDT 2017:
+Booting Derby version The Apache Software Foundation - Apache Derby - 10.11.1.2 - (1629631): instance a816c00e-015b-1689-39af-000008e18348 
+on database directory C:\Users\spyridon\Documents\GitHub\testDB with class loader sun.misc.Launcher$AppClassLoader@76ed5528 
+Loaded from file:/C:/Program%20Files/Java/jdk1.8.0_121/db/lib/derby.jar
 java.vendor=Oracle Corporation
 java.runtime.version=1.8.0_121-b13
-user.dir=/home/evan/Documents/SoftEng/project_c_db
-os.name=Linux
+user.dir=C:\Users\spyridon\Documents\GitHub
+os.name=Windows 10
 os.arch=amd64
-os.version=4.4.0-66-generic
+os.version=10.0
 derby.system.home=null
 Database Class Loader started - derby.database.classpath=''

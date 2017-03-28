@@ -4,6 +4,10 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.TextField;
 
+import java.sql.ResultSet;
+import java.sql.ResultSetMetaData;
+import java.sql.SQLException;
+
 /**
  * Created by evan on 3/27/17.
  */
@@ -52,7 +56,28 @@ public class UIController {
     @FXML
     void onSubmitClick(){
         System.out.println("Sending Command");
-        System.out.println(Main.dbc.send_Command(CommandBox.getText()));
+        System.out.println("ENTERED: " + CommandBox.getText());
+        ResultSet rs = Main.dbc.send_Command(CommandBox.getText());
+        if(rs != null){
+            try {
+                ResultSetMetaData rsmd = rs.getMetaData();
+                int number_columns = rsmd.getColumnCount();
+                String columnname;
+                //String table_name = rsmd.getTableName();
+                //int c = 0;
+                while(rs.next()){
+                    int c;
+                    for(c = 1;c <= number_columns;c++){
+                        System.out.print("'" + rsmd.getColumnName(c) + "':" + rs.getString(c));
+                    }
+                    System.out.println("");
+                }
+            } catch (SQLException e) {
+                e.printStackTrace();
+                return;
+            }
+        }
+        //System.out.println(Main.dbc.send_Command(CommandBox.getText()));
     }
 
     void openMainWindow(){
