@@ -8,7 +8,6 @@ import javafx.scene.control.TextField;
  * Created by evan on 3/27/17.
  */
 public class UIController {
-    DatabaseController dbc;
     @FXML
     TextField AltClass;
     @FXML
@@ -17,44 +16,43 @@ public class UIController {
     TextField CommandBox;
 
     public UIController(){
-        dbc = Main.dbc;
     }
 
 
     @FXML
     void onDefaultClick(){
-        dbc = new DatabaseController("org.apache.derby.jdbc.EmbeddedDriver","jdbc:derby:testDB;create=true");
+        Main.dbc = new DatabaseController("org.apache.derby.jdbc.EmbeddedDriver","jdbc:derby:testDB;create=true");
         try {
-            dbc.registerDriver();
-            dbc.connect();
+            Main.dbc.registerDriver();
+            Main.dbc.connect();
         }
         catch (Exception e){
             e.printStackTrace();
             return;
         }
-        System.out.println(dbc);
+        System.out.println(Main.dbc);
         openMainWindow();
     }
 
     @FXML
     void onAltClick(){
-        dbc = new DatabaseController(AltClass.getText(),AltURL.getText());
+        Main.dbc = new DatabaseController(AltClass.getText(),AltURL.getText());
         try {
-            dbc.registerDriver();
-            dbc.connect();
+            Main.dbc.registerDriver();
+            Main.dbc.connect();
         }
         catch (Exception e){
             e.printStackTrace();
             return;
         }
-        System.out.println(dbc);
+        System.out.println(Main.dbc);
         openMainWindow();
     }
 
     @FXML
     void onSubmitClick(){
         System.out.println("Sending Command");
-        System.out.println(dbc.send_Command(CommandBox.getText()));
+        System.out.println(Main.dbc.send_Command(CommandBox.getText()));
     }
 
     void openMainWindow(){
