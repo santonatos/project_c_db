@@ -10,11 +10,23 @@ public class DatabaseController {
     private String url = "";
     private String driver = "";
 
-    DatabaseController(String _driver, String _url) throws SQLException, ClassNotFoundException{
+    DatabaseController(String _driver, String _url){
         this.url = _url;
         this.driver =  _driver;
-        this.registerDriver();
-        this.connect();
+        try {
+            this.registerDriver();
+            this.connect();
+        }
+        catch (SQLException e){
+            e.printStackTrace();
+            System.out.println("SQL Exception Occurred, check that the url is correct");
+//            return;
+        }
+        catch (ClassNotFoundException e){
+            e.printStackTrace();
+            System.out.println("Class Not Found Exception Occurred, check that the driver is correct and installed");
+//            return;
+        }
     }
 
     ResultSet send_Command(String command){
