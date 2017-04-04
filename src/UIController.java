@@ -9,6 +9,7 @@ import java.sql.ResultSetMetaData;
 import java.sql.SQLException;
 
 /**
+ * Controller class for the FXML UI
  * Created by evan on 3/27/17.
  */
 public class UIController {
@@ -25,10 +26,8 @@ public class UIController {
 
     @FXML
     void onDefaultClick(){
-        Main.dbc = new DatabaseController("org.apache.derby.jdbc.EmbeddedDriver","jdbc:derby:testDB;create=true");
         try {
-            Main.dbc.registerDriver();
-            Main.dbc.connect();
+            Main.dbc = new DatabaseController("org.apache.derby.jdbc.EmbeddedDriver","jdbc:derby:testDB;create=true");
         }
         catch (Exception e){
             e.printStackTrace();
@@ -40,10 +39,8 @@ public class UIController {
 
     @FXML
     void onAltClick(){
-        Main.dbc = new DatabaseController(AltClass.getText(),AltURL.getText());
         try {
-            Main.dbc.registerDriver();
-            Main.dbc.connect();
+            Main.dbc = new DatabaseController(AltClass.getText(),AltURL.getText());
         }
         catch (Exception e){
             e.printStackTrace();
@@ -77,10 +74,10 @@ public class UIController {
                 return;
             }
         }
-        //System.out.println(Main.dbc.send_Command(CommandBox.getText()));
+        System.out.println(Main.dbc.send_Command(CommandBox.getText()));
     }
 
-    void openMainWindow(){
+    private void openMainWindow(){
         Parent root = null;
         try {
             root = FXMLLoader.load(getClass().getResource("MainWindow.fxml"));

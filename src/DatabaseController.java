@@ -12,10 +12,24 @@ public class DatabaseController {
 
     DatabaseController(String _driver, String _url){
         this.url = _url;
-        this.driver =   _driver;
+        this.driver =  _driver;
+        try {
+            this.registerDriver();
+            this.connect();
+        }
+        catch (SQLException e){
+            e.printStackTrace();
+            System.out.println("SQL Exception Occurred, check that the url is correct");
+//            return;
+        }
+        catch (ClassNotFoundException e){
+            e.printStackTrace();
+            System.out.println("Class Not Found Exception Occurred, check that the driver is correct and installed");
+//            return;
+        }
     }
 
-    public ResultSet send_Command(String command){
+    ResultSet send_Command(String command){
         ResultSet rs;
         try {
             stmt = conn.createStatement();
@@ -38,12 +52,12 @@ public class DatabaseController {
         return null;
     }
 
-    boolean registerDriver() throws ClassNotFoundException{
+    private boolean registerDriver() throws ClassNotFoundException{
         Class.forName(driver);
         return true;
     }
 
-    boolean connect() throws SQLException{
+    private boolean connect() throws SQLException{
         conn = DriverManager.getConnection(url);
         return true;
     }
